@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FINAL BOSS</title>
+  <meta name="description" content="Página estilo showcase para FINAL BOSS - Scripts recomendados.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0f14;--card:#0f1720;--accent:#7c3aed;--muted:#99a1b3;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef6;background:linear-gradient(180deg,#071025 0%, #071227 60%);}
+    .wrap{max-width:1100px;margin:36px auto;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.7)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4f46e5);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;box-shadow:0 6px 20px rgba(124,58,237,0.18)}
+    h1{margin:0;font-size:20px;letter-spacing:1px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+    nav{display:flex;gap:8px}
+    .tab{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:8px 14px;border-radius:8px;color:var(--muted);cursor:pointer;font-weight:600}
+    .tab.active{background:linear-gradient(90deg, rgba(124,58,237,0.12), rgba(79,70,229,0.06));color:white;box-shadow:inset 0 -2px 0 rgba(255,255,255,0.02)}
+
+    main{display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:22px}
+    .panel{background:var(--card);padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .hero{padding:28px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);}
+    .hero h2{margin:0 0 8px 0;font-size:18px}
+    .hero p{margin:0;color:var(--muted)}
+
+    .scripts-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .script-card{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .script-card h3{margin:0;font-size:15px}
+    .script-card p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;text-decoration:none;font-weight:700;border:none;cursor:pointer}
+    .meta{font-size:12px;color:var(--muted);margin-top:10px}
+
+    aside.side{position:relative}
+    .side .card{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);}
+    .copyarea{width:100%;height:120px;border-radius:8px;padding:10px;background:#06111a;border:1px solid rgba(255,255,255,0.02);color:#cfe7ff;overflow:auto;font-family:monospace;font-size:12px}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media(max-width:900px){main{grid-template-columns:1fr;}.brand h1{font-size:18px}}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div class="brand">
+        <div class="logo">FB</div>
+        <div>
+          <h1>FINAL BOSS</h1>
+          <p class="lead">Showcase de scripts y recursos — inspirado en un estilo moderno y minimal.</p>
+        </div>
+      </div>
+      <nav aria-label="Navegación">
+        <button class="tab active" data-tab="home">Inicio</button>
+        <button class="tab" data-tab="scripts">Scripts</button>
+        <button class="tab" data-tab="about">Acerca</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div id="home" class="tab-pane">
+          <div class="hero">
+            <h2>Bienvenido a FINAL BOSS</h2>
+            <p>Encuentra aquí tus scripts recomendados y recursos rápidos listos para copiar y usar.</p>
+          </div>
+          <div class="scripts-list" id="scriptsPreview">
+            <!-- Aquí se mostrarán tarjetas cuando la pestaña Scripts esté activa -->
+          </div>
+        </div>
+
+        <div id="scripts" class="tab-pane" style="display:none">
+          <h2 style="margin-top:0">Scripts</h2>
+          <p class="meta">En "Recomendado" aparece tu scrip principal.</p>
+
+          <div class="script-card" id="recommendedCard">
+            <h3>Recomendado — Mi Scrip</h3>
+            <p>Una versión optimizada y lista para usar. Presiona "Copiar" para pegarlo donde lo necesites.</p>
+            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+              <button class="btn" id="copyRecommended">Copiar</button>
+              <a class="btn" id="downloadBtn" href="#" download="mi_scrip.txt" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:white">Descargar</a>
+            </div>
+            <div class="meta">Última actualización: 2025</div>
+          </div>
+
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">Otros scripts:</div>
+          <div class="script-card">
+            <h3>Helper Tool</h3>
+            <p>Pequeño util para tareas comunes.</p>
+          </div>
+        </div>
+
+        <div id="about" class="tab-pane" style="display:none">
+          <h2>Acerca</h2>
+          <p class="meta">FINAL BOSS — Página de presentación. Diseñada para mostrar y distribuir scripts de forma simple.</p>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="card panel">
+          <h3 style="margin-top:0">Recomendado</h3>
+          <div class="copyarea" id="scriptCode">-- Mi Scrip recomendado\n-- Reemplaza este texto por tu script real\nprint('Hola FINAL BOSS')\n</div>
+          <div style="margin-top:10px;display:flex;gap:8px">
+            <button class="btn" id="copySide">Copiar todo</button>
+            <button class="btn" id="minibtn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:white">Ver más</button>
+          </div>
+        </div>
+
+        <div class="card panel" style="margin-top:12px">
+          <h4 style="margin:0 0 8px 0">Contacto</h4>
+          <p class="meta" style="margin:0">No hay botones de Discord o YouTube en esta versión según tu pedido.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>Diseñado por FINAL BOSS • Plantilla ligera para Google Sites / embed</div>
+    </footer>
+  </div>
+
+  <script>
+    // Tabs
+    document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',e=>{
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const tab = e.currentTarget.dataset.tab;
+      document.querySelectorAll('.tab-pane').forEach(p=>p.style.display='none');
+      document.getElementById(tab).style.display='block';
+      // populate preview when scripts tab is opened
+      if(tab==='home') updatePreview();
+    }));
+
+    // Copy helpers
+    function copyText(text){ navigator.clipboard.writeText(text).then(()=>{alert('Copiado al portapapeles')},()=>{alert('El navegador no permitió copiar. Selecciona el texto manualmente.')}); }
+
+    document.getElementById('copySide').addEventListener('click',()=>{
+      copyText(document.getElementById('scriptCode').textContent);
+    });
+
+    document.getElementById('copyRecommended').addEventListener('click',()=>{
+      copyText(document.getElementById('scriptCode').textContent);
+    });
+
+    // Prepare download link for recommended script
+    (function prepareDownload(){
+      const blob = new Blob([document.getElementById('scriptCode').textContent],{type:'text/plain'});
+      document.getElementById('downloadBtn').href = URL.createObjectURL(blob);
+    })();
+
+    // Home preview
+    function updatePreview(){
+      const container = document.getElementById('scriptsPreview');
+      container.innerHTML = '';
+      const card = document.createElement('div'); card.className='script-card';
+      card.innerHTML = `<h3>Recomendado — Mi Scrip</h3><p>Tu script aparece aquí como destacado para facilitar su acceso.</p>`;
+      container.appendChild(card);
+    }
+
+    // Inicializar
+    updatePreview();
+  </script>
+</body>
+</html>
